@@ -1,9 +1,12 @@
 #!/bin/sh
 
 if [ $# -gt 0 ] ; then
-    base=`basename $1 .c`
-    echo "compiling $base"
-    gcc -ggdb `pkg-config opencv --cflags --libs` $base.c -o $base
+    base=`basename $1 .cpp`
+    echo "compiling $base.cpp"
+    g++ -ggdb `pkg-config --cflags opencv` -o `basename $base .cpp` $base.cpp `pkg-config --libs opencv`;
+    echo "---------------------------------------------------"
+    ./$base
+    echo "---------------------------------------------------"
 else
     for i in *.c; do
         echo "compiling $i"
@@ -14,3 +17,5 @@ else
         g++ -ggdb `pkg-config --cflags opencv` -o `basename $i .cpp` $i `pkg-config --libs opencv`;
     done
 fi
+
+

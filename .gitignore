@@ -1,3 +1,10 @@
+*
+.gitignore
+
+!*.cpp
+!*.sh
+!img/
+!*.jpg
+!*.png
 
 
-*.tmp
